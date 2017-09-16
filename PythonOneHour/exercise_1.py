@@ -1,10 +1,21 @@
-fh = open("C:/_repos/Python/PythonOneHour/lesson_1_input.txt", "r", encoding="ascii")
-x = 1
+import collections
+
+try:
+    fh = open("C:/Git/Python/PythonOneHour/lesson_1_input.txt", "r", encoding="ascii")
+except OSError as e:
+    print("error %d reading file %s" % (e.errno, e.filename))
+    quit()
+
 numWords = 0
+wordFreq = collections.Counter()
 for line in fh:
-    print("line {0}: {1}".format(x, line), end="")
     words = line.split()
-    numWords = numWords + len(words)
-    x += 1
+    numWords += len(words)
+    for word in words:
+        wordFreq[word] += 1
 fh.close()
+
+
 print("\nThere are a total of {0} words".format(numWords))
+for key in sorted(wordFreq.keys()):
+    print("key %-12s found %2d times" % (key, wordFreq[key]))
