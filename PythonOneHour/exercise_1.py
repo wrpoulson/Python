@@ -38,7 +38,7 @@ class docIndexer:
 
 def main():
     di = docIndexer()
-    if di.openFile("C:/Git/Python/PythonOneHour/lesson_1_input.txt"):
+    if di.openFile("/home/pi/git/Python/PythonOneHour/lesson_1_input.txt"):
         di.processFile()
         di.printReport()
 
